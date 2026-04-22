@@ -17,6 +17,14 @@ class User extends Authenticatable
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
 
+    protected $table = 'users';
+    protected $primaryKey = 'id';
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+    ];
+
     /**
      * Get the attributes that should be cast.
      *
@@ -28,5 +36,9 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function news(){
+        return $this->hasMany(News::class, 'author_id');
     }
 }
