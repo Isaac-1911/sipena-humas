@@ -5,3 +5,5 @@
         </a>
     </h2>
 @endforeach
+
+{{ $news->links() }}

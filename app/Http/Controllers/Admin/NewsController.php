@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\NewsUpdateRequest;
 use App\Http\Requests\StoreNewsRequest;
 use App\Models\News;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 
 class NewsController extends Controller
 {
@@ -73,7 +72,7 @@ class NewsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(StoreNewsRequest $request, News $news)
+    public function update(NewsUpdateRequest $request, News $news)
     {
         $request->validated();
 
