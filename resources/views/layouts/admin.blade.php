@@ -17,9 +17,7 @@
 
             <div>
                 <div class="logo d-flex align-items-center gap-2 mb-4">
-                    <div class="logo-icon">
-                        <i class="bi bi-shield-check"></i>
-                    </div>
+                    <img src="{{ asset('images/humas-polri.png') }}" alt="" class="sidebar-logo">
                     <div>
                         <strong>SIPENA HUMAS</strong><br>
                         <small>Polres Jember</small>
@@ -28,27 +26,27 @@
 
                 <p class="menu-label">MENU UTAMA</p>
 
-                <a href="{{ route('admin.index') }}" class="menu-item active">
+                <a href="{{ route('admin.index') }}" class="menu-item {{ request()->routeIs('admin.index') ? 'active' : '' }}">
                     <i class="bi bi-grid"></i>
                     Dashboard
                 </a>
 
-                <a href="{{ route('admin.news.index') }}" class="menu-item">
+                <a href="{{ route('admin.news.index') }}" class="menu-item {{ request()->routeIs('admin.news.*') ? 'active' : '' }}">
                     <i class="bi bi-newspaper"></i>
                     Berita
                 </a>
 
-                <a href="{{ route('admin.archive.index') }}" class="menu-item">
+                <a href="{{ route('admin.archive.index') }}" class="menu-item {{ request()->routeIs('admin.archive.*') ? 'active' : '' }}">
                     <i class="bi bi-archive"></i>
                     Arsip
                 </a>
 
-                <a href="#" class="menu-item">
+                <a href="#" class="menu-item {{ request()->routeIs('admin.messages.*') ? 'active' : '' }}">
                     <i class="bi bi-chat"></i>
                     Pesan
                 </a>
 
-                <a href="#" class="menu-item">
+                <a href="#" class="menu-item {{  request()->routeIs('admin.services.*') ? 'active' : '' }}">
                     <i class="bi bi-gear"></i>
                     Layanan
                 </a>
@@ -90,17 +88,17 @@
                     <div class="d-flex align-items-center gap-3">
 
                         {{-- NOTIFICATION --}}
-                        <div class="notification">
+                        {{-- <div class="notification">
                             <i class="bi bi-bell"></i>
                             <span class="badge">3</span>
-                        </div>
+                        </div> --}}
 
                         {{-- PROFILE --}}
                         <div class="profile d-flex align-items-center gap-2">
                             <div class="avatar">A</div>
                             <div>
                                 <strong>Admin</strong><br>
-                                <small>Super Admin</small>
+                                {{-- <small>Super Admin</small> --}}
                             </div>
                         </div>
 

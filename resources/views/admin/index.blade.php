@@ -91,10 +91,15 @@
     {{-- AKTIVITAS TERBARU --}}
     <div class="col-12 col-md-6" data-aos="fade-right" data-aos-delay="300">
         <div class="bg-white p-4 rounded-xl shadow">
-            <h5 class="mb-3">
-                <i class="bi bi-activity me-2"></i>
-                Aktivitas Terbaru
-            </h5>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <div class="card-title">
+                    <i class="bi bi-activity"></i>
+                    <span>Aktivitas Terbaru</span>
+                </div>
+                {{-- <a href="#" class="view-all-btn">
+                    Lihat semua <i class="bi bi-arrow-right"></i>
+                </a> --}}
+            </div>
 
             @php
                 $latestNews = \App\Models\News::latest()->take(3)->get();
@@ -102,59 +107,74 @@
                 $activities = $latestNews->concat($latestArchives)->sortByDesc('created_at')->take(5);
             @endphp
 
-            @forelse($activities as $activity)
-                <div class="activity-item">
-                    <div class="icon-box {{ get_class($activity) === \App\Models\News::class ? 'icon-blue' : 'icon-yellow' }}">
-                        <i class="bi {{ get_class($activity) === \App\Models\News::class ? 'bi-newspaper' : 'bi-archive' }}"></i>
-                    </div>
-                    <div>
-                        <strong>{{ $activity->title }}</strong><br>
-                        <small class="text-muted">
-                            {{ get_class($activity) === \App\Models\News::class ? 'Berita baru ditambahkan' : 'Arsip baru ditambahkan' }}
-                            {{-- • {{ $activity->created_at->diffForHumans() }} --}}
-                        </small>
-                    </div>
+            @if($activities->count() > 0)
+                <div class="activity-list">
+                    @foreach($activities as $activity)
+                        <div class="activity-item">
+                            <div class="activity-icon {{ get_class($activity) === \App\Models\News::class ? 'icon-blue' : 'icon-yellow' }}">
+                                <i class="bi {{ get_class($activity) === \App\Models\News::class ? 'bi-newspaper' : 'bi-archive' }}"></i>
+                            </div>
+                            <div class="activity-content">
+                                <strong>{{ Str::limit($activity->title, 40) }}</strong>
+                                <small>{{ get_class($activity) === \App\Models\News::class ? 'Berita baru ditambahkan' : 'Arsip baru ditambahkan' }}</small>
+                            </div>
+                            {{-- <div class="activity-time">
+                                {{ $activity->created_at->diffForHumans() }}
+                            </div> --}}
+                        </div>
+                    @endforeach
                 </div>
-            @empty
-                <p class="text-muted text-center py-3">Belum ada aktivitas</p>
-            @endforelse
+            @else
+                <div class="empty-state">
+                    <i class="bi bi-inbox"></i>
+                    <p>Belum ada aktivitas</p>
+                </div>
+            @endif
         </div>
     </div>
 
     {{-- PESAN TERBARU --}}
     <div class="col-12 col-md-6" data-aos="fade-left" data-aos-delay="350">
         <div class="bg-white p-4 rounded-xl shadow">
-            <h5 class="mb-3">
-                <i class="bi bi-envelope me-2"></i>
-                Pesan Terbaru
-                <a href="#" class="btn btn-sm btn-link float-end">Lihat semua</a>
-            </h5>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <div class="card-title">
+                    <i class="bi bi-envelope"></i>
+                    <span>Pesan Terbaru</span>
+                </div>
+                {{-- <a href="#" class="view-all-btn">
+                    Lihat semua <i class="bi bi-arrow-right"></i>
+                </a> --}}
+            </div>
 
             @php
                 $messages = \App\Models\Message::latest()->take(5)->get();
             @endphp
 
-            @forelse($messages as $msg)
-                <div class="message-item">
-                    <div class="d-flex justify-content-between align-items-start">
-                        <div>
-                            <strong>{{ $msg->name }}</strong>
-                            @if($msg->email)
-                                <small class="text-muted d-block">📧 {{ $msg->email }}</small>
-                            @endif
-                            <p class="mb-0 mt-1">
-                                {{ \Illuminate\Support\Str::limit($msg->message, 60) }}
+            @if($messages->count() > 0)
+                <div class="message-list">
+                    @foreach($messages as $msg)
+                        <div class="message-item">
+                            <div class="message-header">
+                                <div>
+                                    <span class="message-name">{{ $msg->name }}</span>
+                                    @if($msg->email)
+                                        <span class="message-email">({{ $msg->email }})</span>
+                                    @endif
+                                </div>
+                                <div class="message-date">{{ $msg->created_at->diffForHumans() }}</div>
+                            </div>
+                            <p class="message-text">
+                                {{ \Illuminate\Support\Str::limit($msg->message, 80) }}
                             </p>
                         </div>
-                        <small class="text-muted">{{ $msg->created_at->diffForHumans() }}</small>
-                    </div>
+                    @endforeach
                 </div>
-            @empty
-                <p class="text-muted text-center py-3">
-                    <i class="bi bi-inbox" style="font-size: 40px;"></i><br>
-                    Belum ada pesan
-                </p>
-            @endforelse
+            @else
+                <div class="empty-state">
+                    <i class="bi bi-inbox"></i>
+                    <p>Belum ada pesan masuk</p>
+                </div>
+            @endif
         </div>
     </div>
 </div>
@@ -163,35 +183,43 @@
 <div class="row mt-4" data-aos="fade-up" data-aos-delay="400">
     <div class="col-12">
         <div class="bg-white p-4 rounded-xl shadow">
-            <h5 class="mb-3">
-                <i class="bi bi-lightning-charge me-2"></i>
-                Aksi Cepat
-            </h5>
-            <div class="row g-3">
-                <div class="col-6 col-sm-4 col-md-2">
-                    <a href="{{ route('admin.news.create') }}" class="btn btn-outline-primary w-100 py-3">
-                        <i class="bi bi-plus-circle d-block mb-2" style="font-size: 24px;"></i>
-                        <small>Tambah Berita</small>
-                    </a>
-                </div>
-                <div class="col-6 col-sm-4 col-md-2">
-                    <a href="{{ route('admin.archive.create') }}" class="btn btn-outline-warning w-100 py-3">
-                        <i class="bi bi-archive d-block mb-2" style="font-size: 24px;"></i>
-                        <small>Tambah Arsip</small>
-                    </a>
-                </div>
-                <div class="col-6 col-sm-4 col-md-2">
-                    <a href="{{ route('admin.news.index') }}" class="btn btn-outline-info w-100 py-3">
-                        <i class="bi bi-eye d-block mb-2" style="font-size: 24px;"></i>
-                        <small>Lihat Semua</small>
-                    </a>
-                </div>
-                <div class="col-6 col-sm-4 col-md-2">
-                    <a href="#" class="btn btn-outline-success w-100 py-3">
-                        <i class="bi bi-download d-block mb-2" style="font-size: 24px;"></i>
-                        <small>Export Data</small>
-                    </a>
-                </div>
+            <div class="card-title mb-4">
+                <i class="bi bi-lightning-charge"></i>
+                <span>Aksi Cepat</span>
+            </div>
+
+            <div class="quick-actions-grid">
+                <a href="{{ route('admin.news.create') }}" class="action-card">
+                    <div class="action-icon">
+                        <i class="bi bi-plus-lg"></i>
+                    </div>
+                    <div class="action-title">Tambah Berita</div>
+                    <div class="action-desc">Publikasikan berita terbaru</div>
+                </a>
+
+                <a href="{{ route('admin.archive.create') }}" class="action-card">
+                    <div class="action-icon">
+                        <i class="bi bi-archive"></i>
+                    </div>
+                    <div class="action-title">Tambah Arsip</div>
+                    <div class="action-desc">Simpan arsip penting</div>
+                </a>
+
+                <a href="{{ route('admin.news.index') }}" class="action-card">
+                    <div class="action-icon">
+                        <i class="bi bi-eye"></i>
+                    </div>
+                    <div class="action-title">Lihat Semua</div>
+                    <div class="action-desc">Kelola semua konten</div>
+                </a>
+
+                <a href="#" class="action-card" onclick="return confirmExport()">
+                    <div class="action-icon">
+                        <i class="bi bi-download"></i>
+                    </div>
+                    <div class="action-title">Export Data</div>
+                    <div class="action-desc">Download laporan lengkap</div>
+                </a>
             </div>
         </div>
     </div>
@@ -212,5 +240,14 @@
             }
         });
     });
+
+    // Confirm export function
+    function confirmExport() {
+        if(confirm('Apakah Anda yakin ingin mengexport semua data?')) {
+            alert('Fitur export akan segera tersedia');
+            return false;
+        }
+        return false;
+    }
 </script>
 @endpush

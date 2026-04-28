@@ -22,6 +22,8 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', fn() => view('admin.index'))->name('index');
     Route::resource('news', NewsController::class);
     Route::resource('archive', ArchiveController::class)->only(['index', 'create', 'store', 'show', 'edit', 'update', 'destroy']);
+    Route::get('/admin/messages', fn() => view('admin.messages.index'))->name('admin.messages.index');
+    Route::get('/admin/services', fn() => view('admin.services.index'))->name('admin.services.index');
 });
 
 Route::get('/news', [PublicNewsController::class, 'index'])->name('news.index');
