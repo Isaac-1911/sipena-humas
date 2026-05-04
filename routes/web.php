@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\ArchiveController;
+use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
@@ -19,11 +20,41 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
+    // Dashboard
     Route::get('/', fn() => view('admin.index'))->name('index');
-    Route::resource('news', NewsController::class);
-    Route::resource('archive', ArchiveController::class)->only(['index', 'create', 'store', 'show', 'edit', 'update', 'destroy']);
-    Route::get('/admin/messages', fn() => view('admin.messages.index'))->name('admin.messages.index');
-    Route::get('/admin/services', fn() => view('admin.services.index'))->name('admin.services.index');
+
+    // News Management
+    Route::prefix('news')->name('news.')->group(function () {
+        Route::get('/', [NewsController::class, 'index'])->name('index');
+        Route::get('/create', [NewsController::class, 'create'])->name('create');
+        Route::post('/', [NewsController::class, 'store'])->name('store');
+        Route::get('/{news}', [NewsController::class, 'show'])->name('show');
+        Route::get('/{news}/edit', [NewsController::class, 'edit'])->name('edit');
+        Route::put('/{news}', [NewsController::class, 'update'])->name('update');
+        Route::delete('/{news}', [NewsController::class, 'destroy'])->name('destroy');
+        Route::delete('/{news}/remove-thumbnail', [NewsController::class, 'removeThumbnail'])->name('remove-thumbnail');
+    });
+
+    // Archive Management
+    Route::prefix('archive')->name('archive.')->group(function () {
+        Route::get('/', [ArchiveController::class, 'index'])->name('index');
+        Route::get('/create', [ArchiveController::class, 'create'])->name('create');
+        Route::post('/', [ArchiveController::class, 'store'])->name('store');
+        Route::get('/{archive}', [ArchiveController::class, 'show'])->name('show');
+        Route::get('/{archive}/edit', [ArchiveController::class, 'edit'])->name('edit');
+        Route::put('/{archive}', [ArchiveController::class, 'update'])->name('update');
+        Route::delete('/{archive}', [ArchiveController::class, 'destroy'])->name('destroy');
+    });
+
+    // Messages Management
+    Route::prefix('messages')->name('messages.')->group(function () {
+        Route::get('/', [MessageController::class, 'index'])->name('index');
+        Route::patch('/{message}/mark-as-read', [MessageController::class, 'markAsRead'])->name('mark-as-read');
+        Route::post('/reply', [MessageController::class, 'reply'])->name('reply');
+    });
+
+    // Services
+    Route::get('/services', fn() => view('admin.services.index'))->name('services.index');
 });
 
 Route::get('/news', [PublicNewsController::class, 'index'])->name('news.index');

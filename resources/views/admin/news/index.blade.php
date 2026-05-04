@@ -13,9 +13,7 @@
         </small>
     </div>
 
-    <button onclick="openModal()"
-        class="btn btn-primary"
-        style="background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); border: none; padding: 10px 24px; border-radius: 12px;">
+    <button type="button" id="openModalBtn" class="btn btn-primary" style="background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); border: none; padding: 10px 24px; border-radius: 12px;">
         <i class="bi bi-plus-circle me-2"></i>
         Tambah Berita
     </button>
@@ -33,6 +31,19 @@
     <div class="alert alert-danger alert-dismissible fade show" role="alert" data-aos="fade-down">
         <i class="bi bi-exclamation-triangle me-2"></i>
         {{ session('error') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
+
+@if($errors->any())
+    <div class="alert alert-danger alert-dismissible fade show" role="alert" data-aos="fade-down">
+        <i class="bi bi-exclamation-triangle me-2"></i>
+        <strong>Terjadi kesalahan:</strong>
+        <ul class="mb-0 mt-2">
+            @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 @endif
@@ -98,7 +109,7 @@
                         <form action="{{ route('admin.news.destroy', $item->id) }}"
                               method="POST"
                               class="d-inline"
-                              onsubmit="return confirmDelete()">
+                              onsubmit="return confirmDelete(event)">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="action-btn delete-btn" title="Hapus Berita">
@@ -118,7 +129,7 @@
                 </div>
                 <h5>Belum Ada Berita</h5>
                 <p>Mulai tambahkan berita pertama Anda untuk mengisi konten website</p>
-                <button onclick="openModal()" class="btn btn-primary mt-3">
+                <button type="button" id="openModalBtnEmpty" class="btn btn-primary mt-3">
                     <i class="bi bi-plus-circle me-2"></i>
                     Tambah Berita Pertama
                 </button>
@@ -137,14 +148,14 @@
 @endif
 
 {{-- MODAL TAMBAH BERITA --}}
-<div id="newsModal" class="modal-overlay d-none">
+<div id="newsModal" class="modal-overlay" style="display: none;">
     <div class="modal-container">
         <div class="modal-header">
             <h5 class="modal-title">
                 <i class="bi bi-plus-circle me-2"></i>
                 Tambah Berita Baru
             </h5>
-            <button type="button" class="modal-close" onclick="closeModal()">
+            <button type="button" class="modal-close" id="closeModalBtn">
                 <i class="bi bi-x-lg"></i>
             </button>
         </div>
@@ -158,13 +169,12 @@
                         <i class="bi bi-image me-1"></i>
                         Thumbnail
                     </label>
-                    <div class="thumbnail-upload" onclick="document.getElementById('thumbnailInput').click()">
+                    <div class="thumbnail-upload" id="thumbnailUpload">
                         <input type="file"
                                name="image"
                                id="thumbnailInput"
                                class="d-none"
-                               accept="image/*"
-                               onchange="previewThumbnail(this)">
+                               accept="image/*">
                         <div class="upload-placeholder" id="uploadPlaceholder">
                             <i class="bi bi-cloud-upload" style="font-size: 40px;"></i>
                             <p>Klik untuk upload gambar</p>
@@ -172,7 +182,7 @@
                         </div>
                         <div class="upload-preview d-none" id="uploadPreview">
                             <img id="thumbnailPreview" src="" alt="Preview">
-                            <button type="button" class="remove-image" onclick="removeThumbnail()">
+                            <button type="button" class="remove-image" id="removeImageBtn">
                                 <i class="bi bi-x-circle"></i>
                             </button>
                         </div>
@@ -189,6 +199,7 @@
                            id="title"
                            class="form-control modern-input"
                            placeholder="Masukkan judul berita"
+                           value="{{ old('title') }}"
                            required>
                     <small class="form-text text-muted">Maksimal 100 karakter</small>
                 </div>
@@ -203,12 +214,12 @@
                               class="form-control modern-textarea"
                               rows="6"
                               placeholder="Tulis konten berita di sini..."
-                              required></textarea>
+                              required>{{ old('content') }}</textarea>
                 </div>
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-light" onclick="closeModal()">
+                <button type="button" class="btn btn-light" id="cancelModalBtn">
                     <i class="bi bi-x-circle me-1"></i>
                     Batal
                 </button>
@@ -223,96 +234,219 @@
 
 @endsection
 
-@push('scripts')
+@section('scripts')
 <script>
-function openModal() {
-    document.getElementById('newsModal').classList.remove('d-none');
-    document.body.style.overflow = 'hidden';
-}
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('DOM fully loaded');
 
-function closeModal() {
-    document.getElementById('newsModal').classList.add('d-none');
-    document.body.style.overflow = '';
-    resetForm();
-}
+        const modal = document.getElementById('newsModal');
+        const openModalBtn = document.getElementById('openModalBtn');
+        const openModalBtnEmpty = document.getElementById('openModalBtnEmpty');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const cancelModalBtn = document.getElementById('cancelModalBtn');
+        const thumbnailUpload = document.getElementById('thumbnailUpload');
+        const thumbnailInput = document.getElementById('thumbnailInput');
+        const removeImageBtn = document.getElementById('removeImageBtn');
+        const newsForm = document.getElementById('newsForm');
 
-function resetForm() {
-    document.getElementById('newsForm').reset();
-    removeThumbnail();
-}
-
-function previewThumbnail(input) {
-    const preview = document.getElementById('thumbnailPreview');
-    const placeholder = document.getElementById('uploadPlaceholder');
-    const previewDiv = document.getElementById('uploadPreview');
-
-    if (input.files && input.files[0]) {
-        const reader = new FileReader();
-
-        reader.onload = function(e) {
-            preview.src = e.target.result;
-            placeholder.classList.add('d-none');
-            previewDiv.classList.remove('d-none');
+        // Function to open modal
+        function openModal() {
+            console.log('Opening modal...');
+            if (modal) {
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+                console.log('Modal opened successfully');
+            } else {
+                console.error('Modal element not found!');
+            }
         }
 
-        reader.readAsDataURL(input.files[0]);
-    }
-}
+        // Function to close modal
+        function closeModal() {
+            console.log('Closing modal...');
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = '';
+                resetForm();
+                console.log('Modal closed successfully');
+            }
+        }
 
-function removeThumbnail() {
-    const input = document.getElementById('thumbnailInput');
-    const placeholder = document.getElementById('uploadPlaceholder');
-    const previewDiv = document.getElementById('uploadPreview');
+        // Function to reset form
+        function resetForm() {
+            if (newsForm) {
+                newsForm.reset();
+            }
 
-    input.value = '';
-    placeholder.classList.remove('d-none');
-    previewDiv.classList.add('d-none');
-}
+            // Reset thumbnail
+            if (thumbnailInput) {
+                thumbnailInput.value = '';
+            }
 
-function confirmDelete() {
-    return confirm('Apakah Anda yakin ingin menghapus berita ini? Tindakan ini tidak dapat dibatalkan.');
-}
+            const placeholder = document.getElementById('uploadPlaceholder');
+            const preview = document.getElementById('uploadPreview');
 
-// Close modal when clicking outside
-document.getElementById('newsModal').addEventListener('click', function(e) {
-    if (e.target === this) {
-        closeModal();
-    }
-});
+            if (placeholder) placeholder.classList.remove('d-none');
+            if (preview) preview.classList.add('d-none');
 
-// Form validation
-document.getElementById('newsForm').addEventListener('submit', function(e) {
-    const title = document.getElementById('title').value.trim();
-    const content = document.getElementById('content').value.trim();
+            // Remove error messages
+            document.querySelectorAll('.error-message').forEach(el => el.remove());
 
-    if (!title) {
-        e.preventDefault();
-        alert('Judul berita wajib diisi');
-        return false;
-    }
+            // Reset input borders
+            document.querySelectorAll('.modern-input, .modern-textarea').forEach(input => {
+                input.style.borderColor = '#E5E7EB';
+            });
+        }
 
-    if (title.length > 100) {
-        e.preventDefault();
-        alert('Judul berita maksimal 100 karakter');
-        return false;
-    }
+        // Function to preview thumbnail
+        function previewThumbnail(file) {
+            const preview = document.getElementById('thumbnailPreview');
+            const placeholder = document.getElementById('uploadPlaceholder');
+            const previewDiv = document.getElementById('uploadPreview');
 
-    if (!content) {
-        e.preventDefault();
-        alert('Konten berita wajib diisi');
-        return false;
-    }
-});
+            if (file) {
+                const reader = new FileReader();
 
-// Auto-hide alert after 5 seconds
-setTimeout(function() {
-    const alerts = document.querySelectorAll('.alert');
-    alerts.forEach(function(alert) {
-        const bsAlert = new bootstrap.Alert(alert);
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    if (placeholder) placeholder.classList.add('d-none');
+                    if (previewDiv) previewDiv.classList.remove('d-none');
+                }
+
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Function to remove thumbnail
+        function removeThumbnail() {
+            if (thumbnailInput) {
+                thumbnailInput.value = '';
+            }
+
+            const placeholder = document.getElementById('uploadPlaceholder');
+            const preview = document.getElementById('uploadPreview');
+
+            if (placeholder) placeholder.classList.remove('d-none');
+            if (preview) preview.classList.add('d-none');
+        }
+
+        // Function to show error
+        function showError(input, message) {
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'text-danger error-message';
+            errorDiv.style.fontSize = '12px';
+            errorDiv.style.marginTop = '5px';
+            errorDiv.innerHTML = '<i class="bi bi-exclamation-circle"></i> ' + message;
+            input.parentNode.appendChild(errorDiv);
+            input.style.borderColor = '#EF4444';
+
+            input.addEventListener('focus', function() {
+                errorDiv.remove();
+                input.style.borderColor = '#E5E7EB';
+            }, { once: true });
+        }
+
+        // Event listeners for opening modal
+        if (openModalBtn) {
+            openModalBtn.addEventListener('click', openModal);
+        }
+
+        if (openModalBtnEmpty) {
+            openModalBtnEmpty.addEventListener('click', openModal);
+        }
+
+        // Event listeners for closing modal
+        if (closeModalBtn) {
+            closeModalBtn.addEventListener('click', closeModal);
+        }
+
+        if (cancelModalBtn) {
+            cancelModalBtn.addEventListener('click', closeModal);
+        }
+
+        // Close modal when clicking outside
+        if (modal) {
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+        }
+
+        // Thumbnail upload handler
+        if (thumbnailUpload) {
+            thumbnailUpload.addEventListener('click', function() {
+                if (thumbnailInput) {
+                    thumbnailInput.click();
+                }
+            });
+        }
+
+        if (thumbnailInput) {
+            thumbnailInput.addEventListener('change', function(e) {
+                if (e.target.files && e.target.files[0]) {
+                    previewThumbnail(e.target.files[0]);
+                }
+            });
+        }
+
+        if (removeImageBtn) {
+            removeImageBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                removeThumbnail();
+            });
+        }
+
+        if (newsForm) {
+            newsForm.addEventListener('submit', function(e) {
+                const title = document.getElementById('title');
+                const content = document.getElementById('content');
+                let hasError = false;
+
+                document.querySelectorAll('.error-message').forEach(el => el.remove());
+
+                if (!title.value.trim()) {
+                    showError(title, 'Judul berita wajib diisi');
+                    hasError = true;
+                } else if (title.value.length > 100) {
+                    showError(title, 'Judul berita maksimal 100 karakter');
+                    hasError = true;
+                }
+
+                if (!content.value.trim()) {
+                    showError(content, 'Konten berita wajib diisi');
+                    hasError = true;
+                }
+
+                if (hasError) {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+        }
+
         setTimeout(function() {
-            bsAlert.close();
-        }, 5000);
+            const alerts = document.querySelectorAll('.alert');
+            alerts.forEach(function(alert) {
+                if (typeof bootstrap !== 'undefined') {
+                    const bsAlert = new bootstrap.Alert(alert);
+                    setTimeout(function() {
+                        bsAlert.close();
+                    }, 5000);
+                }
+            });
+        }, 1000);
+
+        console.log('All event listeners registered successfully');
     });
-}, 1000);
+
+    function confirmDelete(event) {
+        const result = confirm('Apakah Anda yakin ingin menghapus berita ini? Tindakan ini tidak dapat dibatalkan.');
+        if (!result) {
+            event.preventDefault();
+            return false;
+        }
+        return true;
+    }
 </script>
-@endpush
+@endsection

@@ -42,13 +42,13 @@ class NewsController extends Controller
 
         $data['author_id'] = auth()->id();
 
-        if ($request->hasFile('image')){
+        if ($request->hasFile('image')) {
             $data['thumbnail'] = $request->file('image')->store('news', 'public');
         }
 
         News::create($data);
 
-        return redirect()->route('admin.news.index')->with('success', 'News created!');
+        return redirect()->route('admin.news.index')->with('success', 'Berita berhasil ditambahkan!');
     }
 
     /**
@@ -78,13 +78,13 @@ class NewsController extends Controller
 
         $data = $request->only(['title', 'content']);
 
-        if ($request->title !== $news->title){
+        if ($request->title !== $news->title) {
             $data['slug'] = News::generateUniqueSlug($request->title);
         }
 
-        if ($request->hasFile('image')){
+        if ($request->hasFile('image')) {
 
-            if ($news->thumbnail && Storage::disk('public')->exists($news->thumbnail)){
+            if ($news->thumbnail && Storage::disk('public')->exists($news->thumbnail)) {
                 Storage::disk('public')->delete($news->thumbnail);
             }
 
@@ -94,7 +94,6 @@ class NewsController extends Controller
         $news->update($data);
 
         return redirect()->route('admin.news.index')->with('success', 'News updated!');
-
     }
 
     /**
@@ -102,12 +101,27 @@ class NewsController extends Controller
      */
     public function destroy(News $news)
     {
-        if ($news->thumbnail && Storage::disk('public')->exists($news->thumbnail)){
+        if ($news->thumbnail && Storage::disk('public')->exists($news->thumbnail)) {
             Storage::disk('public')->delete($news->thumbnail);
         }
 
         $news->delete();
 
         return redirect()->route('admin.news.index')->with('success', 'News deleted!');
+    }
+
+    public function removeThumbnail(News $news)
+    {
+        // cek kalau ada thumbnail
+        if ($news->thumbnail && Storage::disk('public')->exists($news->thumbnail)) {
+            Storage::disk('public')->delete($news->thumbnail);
+        }
+
+        // set ke null di database
+        $news->update([
+            'thumbnail' => null
+        ]);
+
+        return back()->with('success', 'Thumbnail berhasil dihapus');
     }
 }

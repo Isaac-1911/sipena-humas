@@ -180,7 +180,7 @@
 </div>
 
 {{-- QUICK ACTIONS --}}
-<div class="row mt-4" data-aos="fade-up" data-aos-delay="400">
+{{-- <div class="row mt-4" data-aos="fade-up" data-aos-delay="400">
     <div class="col-12">
         <div class="bg-white p-4 rounded-xl shadow">
             <div class="card-title mb-4">
@@ -189,7 +189,7 @@
             </div>
 
             <div class="quick-actions-grid">
-                <a href="{{ route('admin.news.create') }}" class="action-card">
+                <a id="openModalBtn" href="{{ route('admin.news.create') }}" class="action-card">
                     <div class="action-icon">
                         <i class="bi bi-plus-lg"></i>
                     </div>
@@ -223,7 +223,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 
 @endsection
 
