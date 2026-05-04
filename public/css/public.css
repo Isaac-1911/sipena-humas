@@ -1,0 +1,36 @@
+/* DEFAULT (TRANSPARENT) */
+.navbar-custom {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 20px 0;
+    z-index: 999;
+    transition: all 0.3s ease;
+
+    background: transparent;
+    color: white;
+}
+
+/* LINK */
+.navbar-custom a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* SCROLL STATE */
+.navbar-scrolled {
+    background: white !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    padding: 12px 0;
+}
+
+/* LINK SAAT SCROLL */
+.navbar-scrolled a {
+    color: #1e293b !important;
+}
+
+/* OPTIONAL LOGO TEXT */
+.navbar-scrolled .logo strong {
+    color: #1e293b;
+}
