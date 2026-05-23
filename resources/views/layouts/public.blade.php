@@ -1,35 +1,40 @@
-<nav id="navbar" class="navbar-custom">
-    <div class="container d-flex justify-content-between align-items-center">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        {{-- LOGO --}}
-        <div class="logo d-flex align-items-center gap-2">
-            <img src="{{ asset('images/logo.png') }}" width="40">
-            <div>
-                <strong>SIPENA HUMAS</strong><br>
-                <small>Polres Jember</small>
-            </div>
-        </div>
+    <title>@yield('title', 'SIPENA HUMAS')</title>
 
-        {{-- MENU --}}
-        <div class="menu d-flex gap-4">
-            <a href="#">Beranda</a>
-            <a href="#">Berita</a>
-            <a href="#">Arsip</a>
-            <a href="#">Layanan</a>
-            <a href="#">Kontak</a>
-        </div>
+    {{-- Bootstrap --}}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    </div>
-</nav>
+    {{-- Google Font --}}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<script>
-window.addEventListener('scroll', function() {
-    const navbar = document.getElementById('navbar');
+    {{-- Bootstrap Icons --}}
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-    if (window.scrollY > 50) {
-        navbar.classList.add('navbar-scrolled');
-    } else {
-        navbar.classList.remove('navbar-scrolled');
-    }
-});
-</script>
+    {{-- Public CSS --}}
+    <link rel="stylesheet" href="{{ asset('css/public.css') }}">
+</head>
+<body>
+
+    {{-- Navbar --}}
+    @include('partials.navbar')
+
+    {{-- Main Content --}}
+    <main>
+        @yield('content')
+    </main>
+
+    {{-- Bootstrap JS --}}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    {{-- Public JS --}}
+    <script src="{{ asset('js/public.js') }}"></script>
+
+</body>
+</html>
