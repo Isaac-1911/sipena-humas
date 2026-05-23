@@ -7,13 +7,19 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index(){
+    public function index()
+    {
 
-        $featuredNews = News::latest()->first();
+        $featuredNews = News::where('is_published', true)
+            ->latest()
+            ->first();
 
-        $sideNews = News::latest()->skip(1)->take(3)->get();
+        $sideNews = News::where('is_published', true)
+            ->latest()
+            ->skip(1)
+            ->take(3)
+            ->get();
 
         return view('public.home', compact('featuredNews', 'sideNews'));
-
     }
 }
