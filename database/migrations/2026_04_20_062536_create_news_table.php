@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('content')->nullable();
             $table->string('thumbnail')->nullable();
             $table->date('published_at')->nullable();
-            $table->boolean('is_published');
+            $table->boolean('is_published')->default(true);
             $table->foreignId('author_id')->nullable()->constrained('users')->nullOnDelete();
             $table->timestamps();
         });
