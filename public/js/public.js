@@ -1,11 +1,20 @@
-window.addEventListener('scroll', function () {
+const navbar = document.getElementById('mainNavbar');
 
-    const navbar = document.getElementById('mainNavbar');
+if (document.body.classList.contains('homepage')) {
 
-    if (window.scrollY > 50) {
-        navbar.classList.add('navbar-scrolled');
-    } else {
-        navbar.classList.remove('navbar-scrolled');
-    }
+    window.addEventListener('scroll', function () {
 
-});
+        if (window.scrollY > 50) {
+            navbar.classList.add('navbar-scrolled');
+        } else {
+            navbar.classList.remove('navbar-scrolled');
+        }
+
+    });
+
+} else {
+
+    // halaman selain homepage selalu solid
+    navbar.classList.add('navbar-scrolled');
+
+}

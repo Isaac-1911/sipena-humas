@@ -6,6 +6,8 @@
 
 @section('title', 'SIPENA HUMAS')
 
+@section('body-class', 'homepage')
+
 @section('content')
 
     <section class="hero-section">

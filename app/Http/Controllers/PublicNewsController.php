@@ -24,6 +24,15 @@ class PublicNewsController extends Controller
             ->where('is_published', true)
             ->firstOrFail();
 
-        return view('public.news.show', compact('news'));
+        $relatedNews = News::where('is_published', true)
+            ->where('id', '!=', $news->id)
+            ->latest()
+            ->take(3)
+            ->get();
+
+        return view('public.news.show', compact(
+            'news',
+            'relatedNews'
+        ));
     }
 }

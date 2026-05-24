@@ -20,7 +20,7 @@
     {{-- Public CSS --}}
     <link rel="stylesheet" href="{{ asset('css/public.css') }}">
 </head>
-<body>
+<body class="@yield('body-class')">
 
     {{-- Navbar --}}
     @include('partials.navbar')
