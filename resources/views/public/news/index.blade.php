@@ -13,7 +13,6 @@
     <div class="news-hero">
         <div class="container">
             <div class="news-hero-content">
-                <span class="hero-badge">Berita</span>
                 <h1>Informasi Terkini</h1>
                 <p>Berita dan kegiatan resmi Humas Polres Jember</p>
             </div>

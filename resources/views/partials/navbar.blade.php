@@ -35,19 +35,15 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/news">Berita</a>
+                    <a class="nav-link" href="#news">Berita</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/archives">Arsip</a>
+                    <a class="nav-link" href="#services">Layanan</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Layanan</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Kontak</a>
+                    <a class="nav-link" href="#contacts">Kontak</a>
                 </li>
 
             </ul>

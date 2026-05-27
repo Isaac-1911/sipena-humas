@@ -34,6 +34,20 @@ class MessageController extends Controller
         return view('admin.messages.index', compact('messages', 'selected'));
     }
 
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|max:100',
+            'email' => 'required|email|max:100',
+            'subject' => 'required|max:255',
+            'message' => 'required',
+        ]);
+
+        Message::create($validated);
+
+        return back()->with('success', 'Pesan berhasil dikirim.');
+    }
+
     public function markAsRead(Request $request, $message)
     {
         try {
@@ -67,7 +81,6 @@ class MessageController extends Controller
                     'is_read' => $message->is_read
                 ]
             ]);
-
         } catch (\Exception $e) {
             Log::error('Error marking message as read', [
                 'error' => $e->getMessage(),
@@ -113,7 +126,6 @@ class MessageController extends Controller
 
             return redirect()->route('admin.messages.index', ['id' => $originalMessage->id])
                 ->with('success', 'Balasan berhasil dikirim ke ' . $originalMessage->email);
-
         } catch (\Exception $e) {
             return redirect()->back()
                 ->with('error', 'Gagal mengirim balasan: ' . $e->getMessage());

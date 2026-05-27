@@ -10,7 +10,7 @@
 
 @section('content')
 
-    <section class="hero-section">
+    <section class="hero-section" id="#hero-section">
 
         {{-- Background Overlay --}}
         <div class="hero-overlay"></div>
@@ -45,10 +45,6 @@
                         Lihat Berita
                     </a>
 
-                    <a href="/archives" class="btn btn-hero-secondary">
-                        Arsip Dokumentasi
-                    </a>
-
                 </div>
 
             </div>
@@ -58,7 +54,7 @@
     </section>
 
     {{-- NEWS SECTION --}}
-    <section class="news-section">
+    <section class="news-section" id="news">
 
         <div class="container">
 
@@ -189,7 +185,327 @@
 
     </section>
 
-    <section style="height: 100vh; background: white;">
-    </section>
+    {{-- SERVICES SECTION --}}
+<section id="services" class="services-section">
+
+    <div class="container">
+
+        {{-- Header --}}
+        <div class="services-header">
+
+            <span class="section-badge">
+                Pelayanan Publik
+            </span>
+
+            <h2>
+                Layanan Kami
+            </h2>
+
+            <p>
+                Polres Jember menyediakan berbagai layanan publik
+                untuk masyarakat secara profesional dan transparan.
+            </p>
+
+        </div>
+
+        {{-- Grid --}}
+        <div class="services-grid">
+
+            {{-- Card --}}
+            <div class="service-card">
+
+                <div class="service-icon blue">
+                    <i class="bi bi-chat-dots"></i>
+                </div>
+
+                <h3>
+                    Pengaduan Masyarakat
+                </h3>
+
+                <p>
+                    Layanan laporan dan pengaduan masyarakat.
+                </p>
+
+            </div>
+
+            {{-- Card --}}
+            <div class="service-card">
+
+                <div class="service-icon gold">
+                    <i class="bi bi-file-earmark-text"></i>
+                </div>
+
+                <h3>
+                    SKCK
+                </h3>
+
+                <p>
+                    Surat Keterangan Catatan Kepolisian.
+                </p>
+
+            </div>
+
+            {{-- Card --}}
+            <div class="service-card">
+
+                <div class="service-icon green">
+                    <i class="bi bi-car-front"></i>
+                </div>
+
+                <h3>
+                    Pengurusan SIM
+                </h3>
+
+                <p>
+                    Pelayanan Surat Izin Mengemudi.
+                </p>
+
+            </div>
+
+            {{-- Card --}}
+            <div class="service-card">
+
+                <div class="service-icon red">
+                    <i class="bi bi-credit-card"></i>
+                </div>
+
+                <h3>
+                    BPKB & STNK
+                </h3>
+
+                <p>
+                    Pengurusan dokumen kendaraan bermotor.
+                </p>
+
+            </div>
+
+            {{-- Card --}}
+            <div class="service-card">
+
+                <div class="service-icon purple">
+                    <i class="bi bi-people"></i>
+                </div>
+
+                <h3>
+                    Izin Keramaian
+                </h3>
+
+                <p>
+                    Permohonan izin kegiatan dan keramaian.
+                </p>
+
+            </div>
+
+            {{-- Card --}}
+            <div class="service-card">
+
+                <div class="service-icon pink">
+                    <i class="bi bi-shield-check"></i>
+                </div>
+
+                <h3>
+                    Permohonan Pengawalan
+                </h3>
+
+                <p>
+                    Pelayanan pengawalan kegiatan tertentu.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{{-- CONTACT SECTION --}}
+<section class="contact-section" id="contacts">
+
+    <div class="container">
+
+        <div class="row g-4 align-items-start">
+
+            {{-- LEFT --}}
+            <div class="col-lg-6">
+
+                <div class="contact-info">
+
+                    <span class="section-badge">
+                        Hubungi Kami
+                    </span>
+
+                    <h2>
+                        Kontak Polres Jember
+                    </h2>
+
+                    <p>
+                        Sampaikan pertanyaan, laporan, atau aspirasi Anda
+                        kepada kami. Tim Humas Polres Jember siap membantu.
+                    </p>
+
+                    {{-- Item --}}
+                    <div class="contact-list">
+
+                        <div class="contact-item">
+
+                            <div class="contact-icon">
+                                <i class="bi bi-geo-alt"></i>
+                            </div>
+
+                            <div>
+                                <span>Alamat</span>
+
+                                <strong>
+                                    Jl. Kartini No. 1, Jember, Jawa Timur
+                                </strong>
+                            </div>
+
+                        </div>
+
+                        <div class="contact-item">
+
+                            <div class="contact-icon">
+                                <i class="bi bi-telephone"></i>
+                            </div>
+
+                            <div>
+                                <span>Call Center</span>
+
+                                <strong>
+                                    110 (Darurat)
+                                </strong>
+                            </div>
+
+                        </div>
+
+                        <div class="contact-item">
+
+                            <div class="contact-icon">
+                                <i class="bi bi-envelope"></i>
+                            </div>
+
+                            <div>
+                                <span>Email</span>
+
+                                <strong>
+                                    humas@polresjember.go.id
+                                </strong>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            {{-- RIGHT --}}
+            <div class="col-lg-6">
+
+                <div class="contact-form-card">
+
+                    <h3>
+                        Kirim Pesan
+                    </h3>
+
+                    @if(session('success'))
+
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+
+                    @endif
+
+                    <form action="{{ route('contact.store') }}"
+                          method="POST">
+
+                        @csrf
+
+                        <div class="row g-3">
+
+                            <div class="col-md-6">
+
+                                <label class="form-label">
+                                    Nama Lengkap
+                                </label>
+
+                                <input type="text"
+                                       name="name"
+                                       class="form-control"
+                                       placeholder="Nama Anda"
+                                       required>
+
+                            </div>
+
+                            <div class="col-md-6">
+
+                                <label class="form-label">
+                                    Email
+                                </label>
+
+                                <input type="email"
+                                       name="email"
+                                       class="form-control"
+                                       placeholder="email@contoh.com"
+                                       required>
+
+                            </div>
+
+                            <div class="col-12">
+
+                                <label class="form-label">
+                                    Subjek
+                                </label>
+
+                                <input type="text"
+                                       name="subject"
+                                       class="form-control"
+                                       placeholder="Subjek pesan"
+                                       required>
+
+                            </div>
+
+                            <div class="col-12">
+
+                                <label class="form-label">
+                                    Pesan
+                                </label>
+
+                                <textarea name="message"
+                                          rows="5"
+                                          class="form-control"
+                                          placeholder="Tulis pesan Anda di sini..."
+                                          required></textarea>
+
+                            </div>
+
+                            <div class="col-12">
+
+                                <button type="submit"
+                                        class="contact-submit-btn">
+
+                                    <i class="bi bi-send"></i>
+
+                                    Kirim Pesan
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
 
 @endsection

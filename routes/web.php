@@ -62,6 +62,6 @@ Route::get('/news/{slug}', [PublicNewsController::class, 'show'])->name('news.sh
 Route::get('/archives', [PublicArchiveController::class, 'index'])->name('archives.index');
 Route::get('/archives/{archive}', [PublicArchiveController::class, 'show'])->name('archives.show');
 
-Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
-
+Route::post('/contact', [MessageController::class, 'store'])
+    ->name('contact.store');
 require __DIR__ . '/auth.php';
