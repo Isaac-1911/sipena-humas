@@ -18,7 +18,8 @@
           href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     {{-- Public CSS --}}
-    <link rel="stylesheet" href="{{ asset('css/public.css') }}">
+    <link rel="stylesheet"
+      href="{{ asset('css/public.css') }}?v={{ filemtime(public_path('css/public.css')) }}">
 </head>
 <body class="@yield('body-class')">
 
