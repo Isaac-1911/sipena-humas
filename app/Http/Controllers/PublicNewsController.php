@@ -9,13 +9,18 @@ class PublicNewsController extends Controller
 {
     public function index()
     {
+        $news = News::where('is_published', true)
+            ->latest()
+            ->paginate(9);
 
-        $news = News::where('is_published', true)->paginate(10);
+        $featuredNews = News::where('is_published', true)
+            ->latest()
+            ->first();
 
-
-        return view('public.news.index', compact('news'));
-        // dd($news);
-
+        return view('public.news.index', compact(
+            'news',
+            'featuredNews'
+        ));
     }
 
     public function show($slug)
