@@ -19,6 +19,9 @@
 
     {{-- Public CSS --}}
     <link rel="stylesheet" href="{{ asset('css/public.css') }}?v={{ filemtime(public_path('css/public.css')) }}">
+
+    {{-- Favicon --}}
+    <link rel="icon" type="image/png" href="{{ asset('images/humas-polri.png') }}">
 </head>
 
 <body class="@yield('body-class')">
