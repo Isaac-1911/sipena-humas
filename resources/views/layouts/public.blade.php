@@ -246,6 +246,148 @@
         </div>
 
     </footer>
+
+    {{-- FEEDBACK FLOATING BUTTON --}}
+    <button class="feedback-float-btn" data-bs-toggle="modal" data-bs-target="#feedbackModal">
+
+        <i class="bi bi-chat-dots-fill"></i>
+
+    </button>
+
+    {{-- FEEDBACK MODAL --}}
+    <div class="modal fade" id="feedbackModal" tabindex="-1" aria-hidden="true">
+
+        <div class="modal-dialog modal-dialog-centered">
+
+            <div class="modal-content feedback-modal">
+
+                {{-- HANDLE --}}
+                <div class="feedback-handle"></div>
+
+                <div class="feedback-body">
+
+                    {{-- TITLE --}}
+                    <h3>
+                        Seberapa puas Anda dengan layanan SIPENA?
+                    </h3>
+
+                    <form action="" id="feedback-form">
+                        <input type="hidden" name="rating" id="selectedRating" value="baik">
+                        <input type="hidden" name="improvements" id="selectedImprovements">
+
+                        {{-- EMOJI OPTIONS --}}
+                        <div class="feedback-rating-grid">
+
+                            <button type="button" class="feedback-rating-item active" data-rating="buruk">
+                                <span>😞</span>
+                                <small>Buruk</small>
+                            </button>
+
+                            <button type="button" class="feedback-rating-item" data-rating="cukup">
+                                <span>😐</span>
+                                <small>Cukup</small>
+                            </button>
+
+                            <button type="button" class="feedback-rating-item active" data-rating="baik">
+                                <span>🙂</span>
+                                <small>Baik</small>
+                            </button>
+
+                            <button type="button" class="feedback-rating-item" data-rating="bagus">
+                                <span>😁</span>
+                                <small>Bagus</small>
+                            </button>
+
+                            <button type="button" class="feedback-rating-item" data-rating="luar-biasa">
+                                <span>😍</span>
+                                <small>Luar Biasa</small>
+                            </button>
+
+                        </div>
+
+                        {{-- CATEGORY --}}
+                        <div class="feedback-section">
+
+                            <label>
+                                Layanan Yang Digunakan
+                            </label>
+
+                            <select class="form-select">
+
+                                <option>
+                                    Pilih Layanan
+                                </option>
+
+                                <option>
+                                    SKCK
+                                </option>
+
+                                <option>
+                                    SIM
+                                </option>
+
+                                <option>
+                                    Pengaduan
+                                </option>
+
+                                <option>
+                                    Pengawalan
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                        {{-- IMPROVEMENT --}}
+                        <div class="feedback-section">
+
+                            <label>
+                                Apa yang perlu ditingkatkan?
+                            </label>
+
+                            <div class="feedback-tags">
+
+                                <button type="button" class="feedback-tag">
+                                    Tampilan
+                                </button>
+                                <button type="button" class="feedback-tag">Kecepatan</button>
+                                <button type="button" class="feedback-tag">Informasi</button>
+                                <button type="button" class="feedback-tag">Pelayanan</button>
+                                <button type="button" class="feedback-tag">Fitur</button>
+
+                            </div>
+
+                        </div>
+
+                        {{-- TEXTAREA --}}
+                        <div class="feedback-section">
+
+                            <label>
+                                Saran dan Masukan
+                            </label>
+
+                            <textarea class="form-control" rows="4" placeholder="Tulis saran Anda..."></textarea>
+
+                        </div>
+
+                        {{-- SUBMIT --}}
+                        <button type="submit" class="feedback-submit-btn">
+
+                            <i class="bi bi-send"></i>
+
+                            Kirim Feedback
+
+                        </button>
+
+                </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
 </body>
 
 </html>
