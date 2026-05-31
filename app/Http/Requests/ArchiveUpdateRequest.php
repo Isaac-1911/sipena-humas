@@ -29,7 +29,7 @@ class ArchiveUpdateRequest extends FormRequest
             'category' => 'nullable|in:image,video,document',
 
             // input dari form biasanya "file", bukan file_path
-            'file' => 'nullable|file|max:5120',
+            'file' => 'nullable|file|max:1120000',
         ];
     }
 }

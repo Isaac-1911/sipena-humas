@@ -29,7 +29,7 @@ class ArchiveStoreRequest extends FormRequest
             'category' => 'required|in:image,video,document',
 
             // input dari form biasanya "file", bukan file_path
-            'file' => 'required|file|max:5120',
+            'file' => 'required|file|max:1120000',
         ];
     }
 }
