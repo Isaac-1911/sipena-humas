@@ -212,7 +212,7 @@ body.homepage #mainNavbar:not(.navbar-scrolled) .brand-text span {
     display: flex;
     align-items: center;
 
-    background-image: url('https://images.unsplash.com/photo-1768783034899-3d71781a6f74?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1600');
+    background-image: url('../images/hero.jpeg');
     background-size: cover;
     background-position: center;
 
