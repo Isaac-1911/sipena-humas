@@ -131,7 +131,7 @@
                     </div>
 
                     {{-- SERVICES --}}
-                    <div class="col-lg-3">
+                    {{-- <div class="col-lg-3">
 
                         <h5 class="footer-title">
                             Layanan
@@ -165,7 +165,7 @@
 
                         </ul>
 
-                    </div>
+                    </div> --}}
 
                     {{-- CONTACT --}}
                     <div class="col-lg-4">
