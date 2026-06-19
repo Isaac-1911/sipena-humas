@@ -38,9 +38,9 @@
                     <a class="nav-link" href="#news">Berita</a>
                 </li>
 
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link" href="#services">Layanan</a>
-                </li>
+                </li> --}}
 
                 <li class="nav-item">
                     <a class="nav-link" href="#contacts">Kontak</a>

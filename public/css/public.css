@@ -212,7 +212,7 @@ body.homepage #mainNavbar:not(.navbar-scrolled) .brand-text span {
     display: flex;
     align-items: center;
 
-    background-image: url('../images/hero.jpeg');
+    background-image: url('../images/hero-fix.jpeg');
     background-size: cover;
     background-position: center;
 

@@ -81,7 +81,7 @@
 
                         <div class="footer-socials">
 
-                            <a href="#">
+                            <a href="https://www.facebook.com/JemberPoliceOnline/" target="_blank">
                                 <i class="bi bi-facebook"></i>
                             </a>
 
@@ -89,11 +89,11 @@
                                 <i class="bi bi-twitter-x"></i>
                             </a>
 
-                            <a href="#">
+                            <a href="https://www.instagram.com/humaspolresjember" target="_blank">
                                 <i class="bi bi-instagram"></i>
                             </a>
 
-                            <a href="#">
+                            <a href="https://youtube.com/@humaspolresjember" target="_blank">
                                 <i class="bi bi-youtube"></i>
                             </a>
 

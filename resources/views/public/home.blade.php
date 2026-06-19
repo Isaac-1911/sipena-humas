@@ -1,5 +1,5 @@
 @php
-  use Illuminate\Support\Str;
+    use Illuminate\Support\Str;
 @endphp
 
 @extends('layouts.public')
@@ -185,80 +185,82 @@
 
     </section>
 
-   {{-- @include('public.services') --}}
+    {{-- @include('public.services') --}}
 
-{{-- CONTACT SECTION --}}
-<section class="contact-section" id="contacts">
+    {{-- CONTACT SECTION --}}
+    <section class="contact-section" id="contacts">
 
-    <div class="container">
+        <div class="container">
 
-        <div class="row g-4 align-items-start">
+            <div class="row g-4 align-items-start">
 
-            {{-- LEFT --}}
-            <div class="col-lg-6">
+                {{-- LEFT --}}
+                <div class="col-lg-6">
 
-                <div class="contact-info">
+                    <div class="contact-info">
 
-                    <span class="section-badge">
-                        Hubungi Kami
-                    </span>
+                        <span class="section-badge">
+                            Hubungi Kami
+                        </span>
 
-                    <h2>
-                        Kontak Polres Jember
-                    </h2>
+                        <h2>
+                            Kontak Polres Jember
+                        </h2>
 
-                    <p>
-                        Sampaikan pertanyaan, laporan, atau aspirasi Anda
-                        kepada kami. Tim Humas Polres Jember siap membantu.
-                    </p>
+                        <p>
+                            Sampaikan pertanyaan, laporan, atau aspirasi Anda
+                            kepada kami. Tim Humas Polres Jember siap membantu.
+                        </p>
 
-                    {{-- Item --}}
-                    <div class="contact-list">
+                        {{-- Item --}}
+                        <div class="contact-list">
 
-                        <div class="contact-item">
+                            <div class="contact-item">
 
-                            <div class="contact-icon">
-                                <i class="bi bi-geo-alt"></i>
+                                <div class="contact-icon">
+                                    <i class="bi bi-geo-alt"></i>
+                                </div>
+
+                                <div>
+                                    <span>Alamat</span>
+
+                                    <strong>
+                                        Jl. Kartini No. 1, Jember, Jawa Timur
+                                    </strong>
+                                </div>
+
                             </div>
 
-                            <div>
-                                <span>Alamat</span>
+                            <div class="contact-item">
 
-                                <strong>
-                                    Jl. Kartini No. 1, Jember, Jawa Timur
-                                </strong>
+                                <div class="contact-icon">
+                                    <i class="bi bi-telephone"></i>
+                                </div>
+
+                                <div>
+                                    <span>Call Center</span>
+
+                                    <strong>
+                                        110 (Darurat)
+                                    </strong>
+                                </div>
+
                             </div>
 
-                        </div>
+                            <div class="contact-item">
 
-                        <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="bi bi-envelope"></i>
+                                </div>
 
-                            <div class="contact-icon">
-                                <i class="bi bi-telephone"></i>
-                            </div>
+                                <div>
+                                    <span>Email</span>
 
-                            <div>
-                                <span>Call Center</span>
+                                    <strong>
+                                        operatorhumasjember@gmail.com
+                                    </strong>
+                                </div>
 
-                                <strong>
-                                    110 (Darurat)
-                                </strong>
-                            </div>
-
-                        </div>
-
-                        <div class="contact-item">
-
-                            <div class="contact-icon">
-                                <i class="bi bi-envelope"></i>
-                            </div>
-
-                            <div>
-                                <span>Email</span>
-
-                                <strong>
-                                    humas@polresjember.go.id
-                                </strong>
                             </div>
 
                         </div>
@@ -267,104 +269,87 @@
 
                 </div>
 
-            </div>
+                {{-- RIGHT --}}
+                <div class="col-lg-6">
 
-            {{-- RIGHT --}}
-            <div class="col-lg-6">
+                    <div class="contact-form-card">
 
-                <div class="contact-form-card">
+                        <h3>
+                            Kirim Pesan
+                        </h3>
 
-                    <h3>
-                        Kirim Pesan
-                    </h3>
+                        @if (session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
 
-                    @if(session('success'))
+                        <form action="{{ route('contact.store') }}" method="POST">
 
-                        <div class="alert alert-success">
-                            {{ session('success') }}
-                        </div>
+                            @csrf
 
-                    @endif
+                            <div class="row g-3">
 
-                    <form action="{{ route('contact.store') }}"
-                          method="POST">
+                                <div class="col-md-6">
 
-                        @csrf
+                                    <label class="form-label">
+                                        Nama Lengkap
+                                    </label>
 
-                        <div class="row g-3">
+                                    <input type="text" name="name" class="form-control" placeholder="Nama Anda"
+                                        required>
 
-                            <div class="col-md-6">
+                                </div>
 
-                                <label class="form-label">
-                                    Nama Lengkap
-                                </label>
+                                <div class="col-md-6">
 
-                                <input type="text"
-                                       name="name"
-                                       class="form-control"
-                                       placeholder="Nama Anda"
-                                       required>
+                                    <label class="form-label">
+                                        Email
+                                    </label>
+
+                                    <input type="email" name="email" class="form-control" placeholder="email@contoh.com"
+                                        required>
+
+                                </div>
+
+                                <div class="col-12">
+
+                                    <label class="form-label">
+                                        Subjek
+                                    </label>
+
+                                    <input type="text" name="subject" class="form-control" placeholder="Subjek pesan"
+                                        required>
+
+                                </div>
+
+                                <div class="col-12">
+
+                                    <label class="form-label">
+                                        Pesan
+                                    </label>
+
+                                    <textarea name="message" rows="5" class="form-control" placeholder="Tulis pesan Anda di sini..." required></textarea>
+
+                                </div>
+
+                                <div class="col-12">
+
+                                    <button type="submit" class="contact-submit-btn">
+
+                                        <i class="bi bi-send"></i>
+
+                                        Kirim Pesan
+
+                                    </button>
+
+                                </div>
 
                             </div>
 
-                            <div class="col-md-6">
+                        </form>
 
-                                <label class="form-label">
-                                    Email
-                                </label>
-
-                                <input type="email"
-                                       name="email"
-                                       class="form-control"
-                                       placeholder="email@contoh.com"
-                                       required>
-
-                            </div>
-
-                            <div class="col-12">
-
-                                <label class="form-label">
-                                    Subjek
-                                </label>
-
-                                <input type="text"
-                                       name="subject"
-                                       class="form-control"
-                                       placeholder="Subjek pesan"
-                                       required>
-
-                            </div>
-
-                            <div class="col-12">
-
-                                <label class="form-label">
-                                    Pesan
-                                </label>
-
-                                <textarea name="message"
-                                          rows="5"
-                                          class="form-control"
-                                          placeholder="Tulis pesan Anda di sini..."
-                                          required></textarea>
-
-                            </div>
-
-                            <div class="col-12">
-
-                                <button type="submit"
-                                        class="contact-submit-btn">
-
-                                    <i class="bi bi-send"></i>
-
-                                    Kirim Pesan
-
-                                </button>
-
-                            </div>
-
-                        </div>
-
-                    </form>
+                    </div>
 
                 </div>
 
@@ -372,8 +357,6 @@
 
         </div>
 
-    </div>
-
-</section>
+    </section>
 
 @endsection
