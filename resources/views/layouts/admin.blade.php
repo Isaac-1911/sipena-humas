@@ -18,7 +18,7 @@
 
             <div>
                 <div class="logo d-flex align-items-center gap-2 mb-4">
-                    <img src="{{ asset('images/humas-polri.png') }}" alt="" class="sidebar-logo">
+                    <img src="{{ asset('images/logo-fixxx.png') }}" alt="" class="sidebar-logo">
                     <div>
                         <strong>SIPENA HUMAS</strong><br>
                         <small>Polres Jember</small>
@@ -39,11 +39,11 @@
                     Berita
                 </a>
 
-                <a href="{{ route('admin.archive.index') }}"
+                {{-- <a href="{{ route('admin.archive.index') }}"
                     class="menu-item {{ request()->routeIs('admin.archive.*') ? 'active' : '' }}">
                     <i class="bi bi-archive"></i>
                     Arsip
-                </a>
+                </a> --}}
 
                 <a href="{{ route('admin.messages.index') }}"
                     class="menu-item {{ request()->routeIs('admin.messages.*') ? 'active' : '' }}">

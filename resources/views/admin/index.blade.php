@@ -17,10 +17,10 @@
             <small><i class="bi bi-newspaper"></i> Berita</small>
             <h5>{{ \App\Models\News::count() }}</h5>
         </div>
-        <div class="mini-stat">
+        {{-- <div class="mini-stat">
             <small><i class="bi bi-archive"></i> Arsip</small>
             <h5>{{ \App\Models\Archive::count() }}</h5>
-        </div>
+        </div> --}}
     </div>
 </div>
 
@@ -41,7 +41,7 @@
         </div>
     </div>
 
-    <div class="col-12 col-sm-6 col-md-3" data-aos="fade-up" data-aos-delay="150">
+    {{-- <div class="col-12 col-sm-6 col-md-3" data-aos="fade-up" data-aos-delay="150">
         <div class="stat-card d-flex justify-content-between align-items-center">
             <div>
                 <div class="stat-title">Total Arsip</div>
@@ -54,7 +54,7 @@
                 <i class="bi bi-archive"></i>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <div class="col-12 col-sm-6 col-md-3" data-aos="fade-up" data-aos-delay="200">
         <div class="stat-card d-flex justify-content-between align-items-center">

@@ -5,7 +5,7 @@
         <a class="navbar-brand d-flex align-items-center gap-2" href="/">
 
             <div class="logo-box">
-                <img src="{{ asset('images/humas-polri.png') }}" alt="Humas Polri">
+                <img src="{{ asset('images/logo-fixxx.png') }}" alt="Humas Polri">
             </div>
 
             <div class="brand-text">
@@ -31,7 +31,7 @@
             <ul class="navbar-nav mx-auto">
 
                 <li class="nav-item">
-                    <a class="nav-link active" href="/">Beranda</a>
+                    <a class="nav-link" href="/">Beranda</a>
                 </li>
 
                 <li class="nav-item">

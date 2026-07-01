@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="{{ asset('css/public.css') }}?v={{ filemtime(public_path('css/public.css')) }}">
 
     {{-- Favicon --}}
-    <link rel="icon" type="image/png" href="{{ asset('images/humas-polri.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('images/logo-fixxx.png') }}">
 </head>
 
 <body class="@yield('body-class')">
@@ -56,7 +56,7 @@
 
                             <div class="footer-logo">
 
-                                <img src="{{ asset('images/humas-polri.png') }}" alt="Logo">
+                                <img src="{{ asset('images/logo-fixxx.png') }}" alt="Logo">
 
                             </div>
 
@@ -322,19 +322,19 @@
                                 </option>
 
                                 <option>
-                                    SKCK
+                                    Berita
                                 </option>
 
                                 <option>
-                                    SIM
+                                    Kontak
                                 </option>
 
                                 <option>
-                                    Pengaduan
+                                    Pesan
                                 </option>
 
                                 <option>
-                                    Pengawalan
+                                    Sosial Media
                                 </option>
 
                             </select>

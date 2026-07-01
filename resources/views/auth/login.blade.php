@@ -44,7 +44,7 @@
                     rgba(7,28,54,.92),
                     rgba(7,28,54,.92)
                 ),
-                url('https://images.unsplash.com/photo-1768783034899-3d71781a6f74?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1600');
+                url('../images/hero-fix.jpeg');
 
             background-size: cover;
             background-position: center;

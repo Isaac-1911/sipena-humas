@@ -61,10 +61,10 @@ body.homepage #mainNavbar:not(.navbar-scrolled) .brand-text span {
 ========================================= */
 
 .logo-box {
-    width: 34px;
-    height: 34px;
+    width: 64px;
+    height: 64px;
     border-radius: 8px;
-    background: #d4af37;
+    /* background: #d4af37; */
 
     display: flex;
     align-items: center;
@@ -83,14 +83,14 @@ body.homepage #mainNavbar:not(.navbar-scrolled) .brand-text span {
 
 .brand-text h6 {
     margin: 0;
-    font-size: 11px;
+    font-size: 20px;
     font-weight: 700;
     line-height: 1.1;
     color: white;
 }
 
 .brand-text span {
-    font-size: 10px;
+    font-size: 15px;
     color: rgba(255, 255, 255, .75);
 }
 
@@ -103,7 +103,7 @@ body.homepage #mainNavbar:not(.navbar-scrolled) .brand-text span {
 }
 
 .nav-link {
-    font-size: 12px;
+    font-size: 16px;
     font-weight: 500;
     color: white;
     transition: .3s ease;
@@ -1837,9 +1837,9 @@ textarea.form-control {
     width: 42px;
     height: 42px;
 
-    border-radius: 14px;
+    border-radius: 8px;
 
-    background: #d4af37;
+    /* background: #d4af37; */
 
     display: flex;
     align-items: center;
@@ -1849,8 +1849,8 @@ textarea.form-control {
 }
 
 .footer-logo img {
-    width: 24px;
-    height: 24px;
+    width: 64px;
+    height: 64px;
     object-fit: contain;
 }
 
