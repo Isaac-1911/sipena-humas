@@ -185,6 +185,150 @@
 
     </section>
 
+    {{-- ABOUT SECTION --}}
+    <section id="about" class="about-section">
+
+        <div class="container">
+
+            {{-- Header --}}
+            <div class="about-header">
+
+                <div class="about-accent-line">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <h2>
+                    About SIPENA HUMAS
+                </h2>
+
+                <p>
+                    Portal informasi dan pelayanan publik Humas Polres Jember
+                    yang dirancang untuk menghadirkan akses informasi yang cepat,
+                    transparan, dan mudah dijangkau masyarakat.
+                </p>
+
+            </div>
+
+            {{-- Story --}}
+            <div class="about-story">
+
+                <div class="section-title-left">
+                    <span></span>
+                    <h3>Our Story</h3>
+                </div>
+
+                <p>
+                    SIPENA HUMAS hadir sebagai media digital resmi untuk membantu
+                    masyarakat memperoleh informasi terkini seputar kegiatan,
+                    dokumentasi, layanan publik, dan kanal komunikasi Humas Polres Jember.
+                </p>
+
+                <p>
+                    Melalui sistem ini, penyampaian informasi dapat dilakukan secara
+                    lebih rapi, terdokumentasi, dan mudah diakses oleh masyarakat.
+                    Admin Humas dapat mengelola berita, arsip, layanan, serta pesan
+                    masyarakat melalui satu sistem yang terintegrasi.
+                </p>
+
+            </div>
+
+            {{-- Vision Mission --}}
+            <div class="about-vm-grid">
+
+                <div class="about-vm-card">
+
+                    <div class="about-card-line"></div>
+
+                    <h3>Our Vision</h3>
+
+                    <p>
+                        Menjadi portal informasi Humas Polres Jember yang modern,
+                        transparan, responsif, dan terpercaya bagi masyarakat.
+                    </p>
+
+                </div>
+
+                <div class="about-vm-card">
+
+                    <div class="about-card-line"></div>
+
+                    <h3>Our Mission</h3>
+
+                    <p>
+                        Menyediakan informasi publik, dokumentasi, layanan, dan kanal
+                        komunikasi yang mudah diakses serta mendukung pelayanan
+                        kepolisian yang profesional.
+                    </p>
+
+                </div>
+
+            </div>
+
+            {{-- Values --}}
+            <div class="about-values">
+
+                <div class="section-title-left">
+                    <span></span>
+                    <div>
+                        <h3>Our Values</h3>
+                        <p>Prinsip utama dalam pengembangan SIPENA HUMAS</p>
+                    </div>
+                </div>
+
+                <div class="about-values-grid">
+
+                    <div class="about-value-card">
+
+                        <div class="about-value-icon">
+                            <i class="bi bi-shield-check"></i>
+                        </div>
+
+                        <h4>Trust & Reliability</h4>
+
+                        <p>
+                            Informasi disajikan secara resmi, jelas, dan dapat dipercaya.
+                        </p>
+
+                    </div>
+
+                    <div class="about-value-card">
+
+                        <div class="about-value-icon">
+                            <i class="bi bi-award"></i>
+                        </div>
+
+                        <h4>Professional Service</h4>
+
+                        <p>
+                            Mendukung pelayanan publik yang tertata, cepat, dan responsif.
+                        </p>
+
+                    </div>
+
+                    <div class="about-value-card">
+
+                        <div class="about-value-icon">
+                            <i class="bi bi-people"></i>
+                        </div>
+
+                        <h4>Public Focus</h4>
+
+                        <p>
+                            Berorientasi pada kebutuhan masyarakat dalam mengakses informasi.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
     {{-- @include('public.services') --}}
 
     {{-- CONTACT SECTION --}}
@@ -307,8 +451,8 @@
                                         Email
                                     </label>
 
-                                    <input type="email" name="email" class="form-control" placeholder="email@contoh.com"
-                                        required>
+                                    <input type="email" name="email" class="form-control"
+                                        placeholder="email@contoh.com" required>
 
                                 </div>
 
