@@ -860,17 +860,17 @@ h5::after {
 .message-name {
     font-weight: 600;
     color: var(--primary);
-    font-size: 14px;
+    font-size: 15px;
 }
 
 .message-email {
-    font-size: 11px;
+    font-size: 13px;
     color: var(--muted);
     margin-left: 8px;
 }
 
 .message-date {
-    font-size: 10px;
+    font-size: 12px;
     color: var(--muted);
     white-space: nowrap;
 }
