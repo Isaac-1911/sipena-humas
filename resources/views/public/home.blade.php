@@ -200,7 +200,7 @@
                 </div>
 
                 <h2>
-                    About SIPENA HUMAS
+                    Tentang SIPENA HUMAS
                 </h2>
 
                 <p>

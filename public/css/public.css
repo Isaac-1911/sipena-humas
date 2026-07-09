@@ -454,7 +454,7 @@ body.homepage #mainNavbar:not(.navbar-scrolled) .brand-text span {
     padding: 6px 12px;
     border-radius: 999px;
 
-    font-size: 9px;
+    font-size: 12px;
     font-weight: 600;
 }
 /* Content */
@@ -498,7 +498,7 @@ body.homepage #mainNavbar:not(.navbar-scrolled) .brand-text span {
 
     color: #0f172a;
     font-weight: 600;
-    font-size: 11px;
+    font-size: 14px;
 }
 
 /* Side News */
@@ -542,7 +542,7 @@ body.homepage #mainNavbar:not(.navbar-scrolled) .brand-text span {
 }
 
 .side-news-category {
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 600;
     color: #d4af37;
 
@@ -561,7 +561,7 @@ body.homepage #mainNavbar:not(.navbar-scrolled) .brand-text span {
 }
 
 .side-news-date {
-    font-size: 10px;
+    font-size: 13px;
     color: #94a3b8;
 }
 
@@ -2309,7 +2309,7 @@ textarea.form-control {
 }
 
 .about-header p {
-    font-size: 12px;
+    font-size: 15px;
     line-height: 1.9;
     color: rgba(255,255,255,.68);
     margin: 0 auto;
