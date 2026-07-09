@@ -241,7 +241,7 @@
 
                     <div class="about-card-line"></div>
 
-                    <h3>Visi Kami</h3>
+                    <h3>Visi</h3>
 
                     <p>
                         Menjadi portal informasi Humas Polres Jember yang modern,
@@ -254,7 +254,7 @@
 
                     <div class="about-card-line"></div>
 
-                    <h3>Misi Kami</h3>
+                    <h3>Misi</h3>
 
                     <p>
                         Menyediakan informasi publik, dokumentasi, layanan, dan kanal
@@ -272,7 +272,7 @@
                 <div class="section-title-left">
                     <span></span>
                     <div>
-                        <h3>Nilai Kami</h3>
+                        <h3>Nilai</h3>
                         <p>Prinsip utama dalam pengembangan SIPENA HUMAS</p>
                     </div>
                 </div>

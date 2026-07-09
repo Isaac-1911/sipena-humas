@@ -814,11 +814,11 @@ h5::after {
     display: block;
     color: var(--primary);
     margin-bottom: 4px;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .activity-content small {
-    font-size: 11px;
+    font-size: 14px;
     color: var(--muted);
 }
 

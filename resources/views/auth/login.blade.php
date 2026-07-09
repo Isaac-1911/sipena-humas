@@ -62,25 +62,27 @@
             max-width: 420px;
         }
 
-        .login-logo {
+        /* .login-logo {
             width: 68px;
             height: 68px;
 
-            border-radius: 20px;
+            border-radius: 20px; */
 
-            background: #d4af37;
+            /* background: #d4af37; */
+            /* background: #ffffff;
 
             display: flex;
             align-items: center;
             justify-content: center;
 
             margin-bottom: 24px;
-        }
+        } */
 
         .login-logo img {
-            width: 38px;
-            height: 38px;
+            width: 68px;
+            height: 68px;
             object-fit: contain;
+            padding-bottom: 10px;
         }
 
         .login-branding h1 {
@@ -133,7 +135,7 @@
         }
 
         .login-card p {
-            font-size: 11px;
+            font-size: 14px;
             color: #64748b;
 
             margin-bottom: 28px;
@@ -142,7 +144,7 @@
         /* FORM */
 
         .form-label {
-            font-size: 10px;
+            font-size: 14px;
             font-weight: 600;
 
             color: #334155;
@@ -156,7 +158,7 @@
             border-radius: 14px;
             border: 1px solid #dbe2ea;
 
-            font-size: 11px;
+            font-size: 13px;
 
             padding: 0 16px;
 
@@ -179,12 +181,12 @@
         }
 
         .form-check-label {
-            font-size: 10px;
+            font-size: 13px;
             color: #64748b;
         }
 
         .forgot-link {
-            font-size: 10px;
+            font-size: 13px;
             color: #0f172a;
 
             text-decoration: none;
@@ -203,7 +205,7 @@
             background: #0f172a;
             color: white;
 
-            font-size: 12px;
+            font-size: 14px;
             font-weight: 600;
 
             transition: .3s ease;
@@ -258,7 +260,7 @@
 
                 <div class="login-logo">
 
-                    <img src="{{ asset('images/humas-polri.png') }}"
+                    <img src="{{ asset('images/logo-fixxx.png') }}"
                          alt="Logo">
 
                 </div>
@@ -269,8 +271,8 @@
                 </h1>
 
                 <p>
-                    Sistem Informasi dan Pelayanan Nasional
-                    Hubungan Masyarakat Polres Jember.
+                    Sistem Pelayanan dan Arsip HUMAS Polres Jember.
+
                     Portal informasi publik yang modern,
                     transparan, dan terpercaya.
                 </p>
