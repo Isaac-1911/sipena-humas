@@ -216,7 +216,7 @@
 
                 <div class="section-title-left">
                     <span></span>
-                    <h3>Our Story</h3>
+                    <h3>Cerita Kami</h3>
                 </div>
 
                 <p>
@@ -228,7 +228,7 @@
                 <p>
                     Melalui sistem ini, penyampaian informasi dapat dilakukan secara
                     lebih rapi, terdokumentasi, dan mudah diakses oleh masyarakat.
-                    Admin Humas dapat mengelola berita, arsip, layanan, serta pesan
+                    Admin Humas dapat mengelola berita, layanan, serta pesan
                     masyarakat melalui satu sistem yang terintegrasi.
                 </p>
 
@@ -241,7 +241,7 @@
 
                     <div class="about-card-line"></div>
 
-                    <h3>Our Vision</h3>
+                    <h3>Visi Kami</h3>
 
                     <p>
                         Menjadi portal informasi Humas Polres Jember yang modern,
@@ -254,7 +254,7 @@
 
                     <div class="about-card-line"></div>
 
-                    <h3>Our Mission</h3>
+                    <h3>Misi Kami</h3>
 
                     <p>
                         Menyediakan informasi publik, dokumentasi, layanan, dan kanal
@@ -272,7 +272,7 @@
                 <div class="section-title-left">
                     <span></span>
                     <div>
-                        <h3>Our Values</h3>
+                        <h3>Nilai Kami</h3>
                         <p>Prinsip utama dalam pengembangan SIPENA HUMAS</p>
                     </div>
                 </div>
@@ -285,7 +285,7 @@
                             <i class="bi bi-shield-check"></i>
                         </div>
 
-                        <h4>Trust & Reliability</h4>
+                        <h4>Kepercayaan & Keandalan</h4>
 
                         <p>
                             Informasi disajikan secara resmi, jelas, dan dapat dipercaya.
@@ -299,7 +299,7 @@
                             <i class="bi bi-award"></i>
                         </div>
 
-                        <h4>Professional Service</h4>
+                        <h4>Layanan Profesional</h4>
 
                         <p>
                             Mendukung pelayanan publik yang tertata, cepat, dan responsif.
@@ -313,7 +313,7 @@
                             <i class="bi bi-people"></i>
                         </div>
 
-                        <h4>Public Focus</h4>
+                        <h4>Arah Pandang Publik</h4>
 
                         <p>
                             Berorientasi pada kebutuhan masyarakat dalam mengakses informasi.
@@ -348,7 +348,7 @@
                         </span>
 
                         <h2>
-                            Kontak Polres Jember
+                            Kontak HUMAS Polres Jember
                         </h2>
 
                         <p>
@@ -401,7 +401,7 @@
                                     <span>Email</span>
 
                                     <strong>
-                                        operatorhumasjember@gmail.com
+                                        humasjember1@gmail.com
                                     </strong>
                                 </div>
 

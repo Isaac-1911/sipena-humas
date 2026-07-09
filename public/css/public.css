@@ -1655,7 +1655,7 @@ body.homepage #mainNavbar:not(.navbar-scrolled) .brand-text span {
 }
 
 .contact-info p {
-    font-size: 11px;
+    font-size: 14px;
     line-height: 1.9;
 
     color: #64748b;
@@ -1700,14 +1700,14 @@ body.homepage #mainNavbar:not(.navbar-scrolled) .brand-text span {
 .contact-item span {
     display: block;
 
-    font-size: 10px;
+    font-size: 14px;
     color: #94a3b8;
 
     margin-bottom: 3px;
 }
 
 .contact-item strong {
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 600;
 
     color: #0f172a;
@@ -1739,7 +1739,7 @@ body.homepage #mainNavbar:not(.navbar-scrolled) .brand-text span {
 /* FORM ELEMENT */
 
 .form-label {
-    font-size: 10px;
+    font-size: 13px;
     font-weight: 600;
 
     color: #334155;
@@ -1753,7 +1753,7 @@ body.homepage #mainNavbar:not(.navbar-scrolled) .brand-text span {
     border-radius: 12px;
     border: 1px solid #dbe2ea;
 
-    font-size: 11px;
+    font-size: 12px;
 
     padding: 0 14px;
 
@@ -2344,7 +2344,7 @@ textarea.form-control {
 }
 
 .about-story p {
-    font-size: 11px;
+    font-size: 14px;
     line-height: 2;
     color: rgba(255,255,255,.68);
     margin-bottom: 18px;
@@ -2382,7 +2382,7 @@ textarea.form-control {
 }
 
 .about-vm-card p {
-    font-size: 11px;
+    font-size: 14px;
     line-height: 2;
     color: rgba(255,255,255,.68);
     margin: 0;
@@ -2400,7 +2400,7 @@ textarea.form-control {
 }
 
 .about-values .section-title-left p {
-    font-size: 11px;
+    font-size: 14px;
     color: rgba(255,255,255,.6);
     margin: 6px 0 0;
 }
@@ -2444,7 +2444,7 @@ textarea.form-control {
 }
 
 .about-value-card p {
-    font-size: 10.5px;
+    font-size: 13px;
     line-height: 1.9;
     color: rgba(255,255,255,.65);
     margin: 0;
