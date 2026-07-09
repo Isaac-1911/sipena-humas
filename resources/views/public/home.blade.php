@@ -22,7 +22,7 @@
                 {{-- Badge --}}
                 <div class="hero-badge">
                     <i class="bi bi-shield-check"></i>
-                    Sistem Informasi Pelayanan & Pengaduan
+                    Sistem Pencatatan dan Arsip HUMAS
                 </div>
 
                 {{-- Heading --}}

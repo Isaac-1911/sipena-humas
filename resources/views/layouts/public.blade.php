@@ -75,8 +75,7 @@
                         </div>
 
                         <p class="footer-desc">
-                            Sistem Informasi dan Pelayanan Nasional Hubungan
-                            Masyarakat Polres Jember.
+                            Sistem Pencatatan dan Arsip HUMAS Polres Jember
                         </p>
 
                         <div class="footer-socials">
@@ -191,7 +190,7 @@
                                 <i class="bi bi-telephone"></i>
 
                                 <span>
-                                    110 | (0331) 411-910
+                                    081249168401
                                 </span>
 
                             </div>
@@ -201,7 +200,7 @@
                                 <i class="bi bi-envelope"></i>
 
                                 <span>
-                                    humas@polresjember.go.id
+                                    humasjember1@gmail.com
                                 </span>
 
                             </div>
@@ -211,7 +210,7 @@
                                 <i class="bi bi-clock"></i>
 
                                 <span>
-                                    Senin–Jumat, 07.00–15.30
+                                    24 Jam
                                 </span>
 
                             </div>
@@ -232,7 +231,7 @@
                     Hak Cipta Dilindungi.
                 </p>
 
-                <div class="footer-bottom-links">
+                {{-- <div class="footer-bottom-links">
 
                     <a href="#">
                         Kebijakan Privasi
@@ -242,7 +241,7 @@
                         Syarat & Ketentuan
                     </a>
 
-                </div>
+                </div> --}}
 
             </div>
 
