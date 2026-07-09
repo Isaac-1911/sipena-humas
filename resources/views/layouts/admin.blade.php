@@ -14,7 +14,7 @@
     <div class="flex h-screen">
 
         {{-- SIDEBAR --}}
-        <div class="sidebar d-flex flex-column justify-content-between">
+        <div class="sidebar d-flex flex-column justify-content-between" data-aos="fade-up">
 
             <div>
                 <div class="logo d-flex align-items-center gap-2 mb-4">
