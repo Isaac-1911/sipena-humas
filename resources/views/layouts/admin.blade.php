@@ -86,13 +86,13 @@
             {{-- TOPBAR --}}
             <div class="main">
 
-                <div class="topbar d-flex justify-content-between align-items-center">
+                <div class="topbar d-flex justify-content-end align-items-center">
 
                     {{-- SEARCH --}}
-                    <div class="search-box">
+                    {{-- <div class="search-box">
                         <i class="bi bi-search"></i>
                         <input type="text" placeholder="Cari...">
-                    </div>
+                    </div> --}}
 
                     {{-- RIGHT SIDE --}}
                     <div class="d-flex align-items-center gap-3">
